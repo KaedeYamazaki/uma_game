@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>謹賀新年</title>
+
+  <style>
+    :root {
+      --bg: #f8f6f2;
+      --text: #2b2b2b;
+      --accent: #b88c4a;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: white;
+      max-width: 480px;
+      width: 90%;
+      padding: 48px 32px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+    }
+
+    .year {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .name {
+      font-size: 0.95rem;
+      text-align: right;
+      opacity: 0.8;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>謹賀新年</h1>
+    <div class="year">2026</div>
+
+    <p>
+      旧年中は大変お世話になりました。<br>
+      本年も、健やかで実り多い一年となりますよう<br>
+      心よりお祈り申し上げます。
+    </p>
+
+    <div class="name">
+      令和八年 元旦<br>
+      山崎 楓
+    </div>
+
+    <footer>
+      ※このページは年賀状の代わりとしてお送りしています
+    </footer>
+  </main>
+</body>
+</html>
