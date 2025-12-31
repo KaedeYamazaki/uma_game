@@ -106,7 +106,7 @@ class Obstacle:
 
 class Game:
     def __init__(self):
-        pyxel.init(160, 144, title="午年ホースジャンプ", fps=60)
+        pyxel.init(160, 144, title="午年game", fps=60)
         self.setup_sounds()
         self.reset()
         pyxel.run(self.update, self.draw)
@@ -146,7 +146,8 @@ class Game:
         self.high_score = 0
         self.game_speed = 3
         self.frame_count = 0
-        self.game_state = "ready"  # ready, playing, gameover
+        self.gene_obstacles_val = 80
+        self.game_state = "ready"  # ready, playing, Happy_New_Year!
 
     def update(self):
         if self.game_state == "ready":
@@ -159,14 +160,15 @@ class Game:
                 self.horse = Horse()
         
         elif self.game_state == "playing":
-            self.frame_count += 1
+            self.frame_count += 0.5
             
             # 馬の更新
             self.horse.update()
 
             # 障害物の生成
-            if self.frame_count % 80 == 0:
+            if self.frame_count % self.gene_obstacles_val == 0:
                 self.obstacles.append(Obstacle(160,self.score))
+                self.gene_obstacles_val = random.randint(80, 85)
 
             # 障害物の更新
             for obstacle in self.obstacles[:]:
@@ -183,12 +185,12 @@ class Game:
 
             # 衝突判定
             if self.check_collision():
-                self.game_state = "gameover"
+                self.game_state = "Happy_New_Year!"
                 self.high_score = max(self.high_score, self.score)
                 # ゲームオーバー音
                 pyxel.play(2, 2)
         
-        elif self.game_state == "gameover":
+        elif self.game_state == "Happy_New_Year!":
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
                 self.game_state = "ready"
                 self.horse = Horse()
@@ -237,10 +239,10 @@ class Game:
             pyxel.text(30, 65, "to Jump High!", 7)
             pyxel.text(25, 80, "TOUCH to Start", 7)
         
-        elif self.game_state == "gameover":
+        elif self.game_state == "Happy_New_Year!":
             pyxel.rect(20, 50, 120, 40, 0)
             pyxel.rectb(20, 50, 120, 40, 7)
-            pyxel.text(45, 60, "GAME OVER!", 8)
+            pyxel.text(45, 60, "HAPPY NEW YEAR!", 8)
             pyxel.text(25, 72, "TOUCH to Retry", 7)
 
     def draw_clouds(self):
